@@ -134,11 +134,16 @@ export class WebSocketService {
     this.roomCode = roomCode;
     this.messageHandler = onMessage;
 
-    const wsUrl = API_CONFIG.BASE_URL + API_CONFIG.ENDPOINTS.WS;
+    const wsUrl = API_CONFIG.WS_URL;
     console.log(`Connecting to WebSocket URL: ${wsUrl}`);
 
     this.client = new Client({
-      webSocketFactory: () => new SockJS(wsUrl) as any,
+      webSocketFactory: () => {
+        if (wsUrl.startsWith("ws://") || wsUrl.startsWith("wss://")) {
+          return new WebSocket(wsUrl);
+        }
+        return new SockJS(wsUrl) as any;
+      },
 
       onConnect: () => {
         console.log(`WebSocket connected to room: ${roomCode}`);

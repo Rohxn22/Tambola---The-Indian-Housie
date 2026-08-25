@@ -47,7 +47,7 @@ $env:DB_PASSWORD="your_postgres_password"
 export DB_PASSWORD=your_postgres_password
 ```
 
-Alternatively, create a `.env` file in the backend directory (see `.env.example`).
+Alternatively, create a `.env` file in the backend directory using `.env.example` as a template. The application imports this file when present; environment variables supplied by Render or your shell are also supported.
 
 ### Build and Run
 
@@ -63,12 +63,14 @@ The application will start on `http://localhost:8080`
 
 ### Configuration
 
-Database configuration is located in `src/main/resources/application.properties`:
-- Host: localhost
-- Port: 5432
-- Database: tambola_db
-- Username: postgres
-- Password: Set via `DB_PASSWORD` environment variable
+The backend reads its deployment configuration from environment variables:
+- `DATABASE_URL`: JDBC PostgreSQL URL
+- `DB_USERNAME`: PostgreSQL username
+- `DB_PASSWORD`: PostgreSQL password
+- `FRONTEND_URL`: allowed frontend origin(s), comma-separated when needed locally
+- `PORT`: server port; Render supplies this automatically
+
+Local defaults are provided for the database URL, username, frontend origins, and server port. `DB_PASSWORD` must be supplied through the environment.
 
 ## Project Structure
 

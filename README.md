@@ -31,10 +31,7 @@ cd backend
 # Install dependencies
 mvn clean install
 
-# Configure database in application.properties
-# spring.datasource.url=jdbc:postgresql://localhost:5432/tambola_db
-# spring.datasource.username=postgres
-# spring.datasource.password=your_password
+# Configure the backend environment (see backend/.env.example)
 
 # Run
 mvn spring-boot:run
@@ -78,6 +75,10 @@ Frontend runs on: `http://localhost:3000`
 - `src/components/` - React components
 - `src/services/` - API & WebSocket clients
 - `src/lib/game-store.ts` - State management
+
+## Deployment configuration
+
+The frontend uses `VITE_API_URL` and `VITE_WS_URL`. The backend uses `DATABASE_URL`, `DB_USERNAME`, `DB_PASSWORD`, `FRONTEND_URL`, and `PORT`. Copy the relevant `.env.example` file for local setup; do not commit `.env` files.
 
 ## Database
 

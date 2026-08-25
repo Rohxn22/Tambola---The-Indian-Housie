@@ -1,5 +1,6 @@
 package com.tambola.housie.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -8,6 +9,9 @@ import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 public class CorsConfig {
+    
+    @Value("${FRONTEND_URL:http://localhost:3000,http://localhost:5173,http://localhost:8080}")
+    private String allowedOrigins;
 
     @Bean
     public CorsFilter corsFilter() {
@@ -17,14 +21,11 @@ public class CorsConfig {
         // Allow credentials
         config.setAllowCredentials(true);
         
-        // Allow specific origins (update for production)
-        config.addAllowedOrigin("http://localhost:3000");
-        config.addAllowedOrigin("http://localhost:5173");
-        config.addAllowedOrigin("http://localhost:8080");
-        
-        // For production, replace with your actual domain:
-        // config.addAllowedOrigin("https://yourdomain.com");
-        // config.addAllowedOrigin("https://api.yourdomain.com");
+        // Parse and add allowed origins from environment variable
+        String[] origins = allowedOrigins.split(",");
+        for (String origin : origins) {
+            config.addAllowedOrigin(origin.trim());
+        }
         
         // Allow all headers
         config.addAllowedHeader("*");
