@@ -56,6 +56,19 @@ export function Footer() {
             Stats for nerds
           </Link>
         </nav>
+
+        {/* Copyright and Contact */}
+        <div className="mt-4 flex flex-col items-center gap-2 text-xs text-muted-foreground">
+          <p className="flex items-center gap-1">
+            © {new Date().getFullYear()} playtambolaonline.in
+          </p>
+          <a
+            href="mailto:admin@playtambolaonline.in"
+            className="text-purple-600 transition-colors hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
+          >
+            admin@playtambolaonline.in
+          </a>
+        </div>
       </div>
     </footer>
   );

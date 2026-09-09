@@ -12,8 +12,7 @@ export const API_CONFIG = {
     import.meta.env["VITE_WS_URL"] ||
     (import.meta.env["VITE_API_URL"] ||
       import.meta.env["VITE_API_BASE_URL"] ||
-      "http://localhost:8080").replace(/^https/, "https").replace(/^http/, "http") +
-    "/ws",
+      "http://localhost:8080") + "/ws",
   ENDPOINTS: {
     ROOMS: "/api/rooms",
   },
