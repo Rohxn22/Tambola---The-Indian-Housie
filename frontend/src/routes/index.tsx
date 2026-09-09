@@ -13,12 +13,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Play Tambola online with friends. Create a room, pick your ticket and let the numbers roll — no accounts, no downloads.",
+          "Pick your ticket. Invite your crew. Start playing. No login, no registration — just pure Tambola fun.",
       },
       { property: "og:title", content: "Tambola — The Indian Housie Online" },
       {
         property: "og:description",
-        content: "Bring your friends. Pick your tickets. Let the numbers roll.",
+        content: "Pick your ticket. Invite your crew. Start playing. No login, no registration — just pure Tambola fun.",
       },
     ],
   }),
@@ -102,7 +102,9 @@ function Home() {
                   The Indian Housie
                 </p>
                 <p className="animate-fade-up mx-auto mt-4 max-w-xl text-sm font-medium text-muted-foreground sm:text-base [animation-delay:200ms]">
-                  Bring your friends. Pick your tickets. Let the numbers roll.
+                  Pick your ticket. Invite your crew. Start playing.
+                  <br />
+                  No login, no registration — just pure Tambola fun.
                 </p>
               </section>
             </HeroShowcase>

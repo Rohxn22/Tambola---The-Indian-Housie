@@ -136,6 +136,7 @@ export class WebSocketService {
 
     const wsUrl = API_CONFIG.WS_URL;
     console.log(`Connecting to WebSocket URL: ${wsUrl}`);
+    console.log(`Using SockJS for connection`);
 
     this.client = new Client({
       webSocketFactory: () => {
