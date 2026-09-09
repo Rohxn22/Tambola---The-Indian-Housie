@@ -139,9 +139,7 @@ export class WebSocketService {
 
     this.client = new Client({
       webSocketFactory: () => {
-        if (wsUrl.startsWith("ws://") || wsUrl.startsWith("wss://")) {
-          return new WebSocket(wsUrl);
-        }
+        // Always use SockJS for better compatibility and fallback support
         return new SockJS(wsUrl) as any;
       },
 
